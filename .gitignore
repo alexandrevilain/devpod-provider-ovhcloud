@@ -1,0 +1,4 @@
+dist/
+release/
+bin/
+.DS_Store
