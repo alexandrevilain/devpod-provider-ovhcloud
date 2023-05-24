@@ -8,7 +8,7 @@ import (
 // FlavorCapability holds capability for a flavor.
 type FlavorCapability struct {
 	// Name of the capability
-	// Allowed: failoverip┃resize┃snapshot┃volume
+	// Allowed: failoverip, resize, snapshot, volume.
 	Name    string `json:"name"`
 	Enabled bool   `json:"enabled"`
 }
@@ -52,7 +52,7 @@ type Image struct {
 	PlanCode   string   `json:"planCode"`
 }
 
-// IP holds ip adress properties.
+// IP holds ip address properties.
 type IP struct {
 	IP        string `json:"ip"`
 	Type      string `json:"type"`
@@ -145,5 +145,5 @@ func PublicIP(instance *Instance) (string, error) {
 			return ip.IP, nil
 		}
 	}
-	return "", errors.New("can't find public adress")
+	return "", errors.New("can't find public address")
 }

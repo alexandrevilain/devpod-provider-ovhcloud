@@ -11,10 +11,10 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// StatusCmd holds the cmd flags
+// StatusCmd holds the "status" command flags.
 type StatusCmd struct{}
 
-// NewStatusCmd defines a command
+// NewStatusCmd creates the "status" command.
 func NewStatusCmd() *cobra.Command {
 	cmd := &StatusCmd{}
 	statusCmd := &cobra.Command{
@@ -33,7 +33,7 @@ func NewStatusCmd() *cobra.Command {
 	return statusCmd
 }
 
-// Run runs the command logic
+// Run runs the "status" command logic.
 func (cmd *StatusCmd) Run(ctx context.Context, options *options.Options, log log.Logger) error {
 	client, err := ovhcloud.NewClient(options.Authentication)
 	if err != nil {
@@ -45,11 +45,11 @@ func (cmd *StatusCmd) Run(ctx context.Context, options *options.Options, log log
 		return err
 	}
 
-	_, err = fmt.Fprint(os.Stdout, OVHCloudStatusToDevPodStatus(status))
+	_, err = fmt.Fprint(os.Stdout, ovhCloudStatusToDevPodStatus(status))
 	return err
 }
 
-func OVHCloudStatusToDevPodStatus(status ovhcloud.InstanceStatus) string {
+func ovhCloudStatusToDevPodStatus(status ovhcloud.InstanceStatus) string {
 	switch status {
 	case ovhcloud.InstanceActive:
 		return "Running"
