@@ -1,5 +1,9 @@
 VERSION ?= 0.0.0-dev
 
+.PHONY: lint
+lint: golangci-lint ## Run golang-ci-lint against code.
+	$(GOLANGCI_LINT) run ./...
+
 ## Location to create the release
 RELEASE_DIR ?= $(shell pwd)/release
 $(RELEASE_DIR):
@@ -20,10 +24,12 @@ $(LOCALBIN):
 ## Tool Binaries
 GOX ?= $(LOCALBIN)/gox
 GOMPLATE ?= $(LOCALBIN)/gomplate
+GOLANGCI_LINT ?= $(LOCALBIN)/golangci-lint
 
 ## Tool Versions
 GOX_VERSION ?= latest
 GOMPLATE_VERSION ?= v3.11.5
+GOLANGCI_LINT_VERSION ?= v1.52.2
 
 .PHONY: gox
 gox: $(GOX) 
@@ -34,3 +40,9 @@ $(GOX): $(LOCALBIN)
 gomplate: $(GOMPLATE) 
 $(GOMPLATE): $(LOCALBIN)
 	GOBIN=$(LOCALBIN) go install github.com/hairyhenderson/gomplate/v3/cmd/gomplate@$(GOMPLATE_VERSION)
+
+.PHONY: golangci-lint
+golangci-lint: $(GOLANGCI_LINT)
+$(GOLANGCI_LINT): $(GOLANGCI_LINT)
+	test -s $(LOCALBIN)/golangci-lint && $(LOCALBIN)/golangci-lint version | grep -q $(GOLANGCI_LINT_VERSION) || \
+	GOBIN=$(LOCALBIN) go install github.com/golangci/golangci-lint/cmd/golangci-lint@$(GOLANGCI_LINT_VERSION)

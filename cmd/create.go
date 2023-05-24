@@ -12,10 +12,10 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// CreateCmd holds the cmd flags
+// CreateCmd holds the "create" command flags.
 type CreateCmd struct{}
 
-// NewCreateCmd defines the create command.
+// NewCreateCmd creates the "create" command.
 func NewCreateCmd() *cobra.Command {
 	cmd := &CreateCmd{}
 	createCmd := &cobra.Command{
@@ -34,7 +34,7 @@ func NewCreateCmd() *cobra.Command {
 	return createCmd
 }
 
-// Run runs the command logic
+// Run runs the "create" command logic.
 func (cmd *CreateCmd) Run(ctx context.Context, options *options.Options, log log.Logger) error {
 	client, err := ovhcloud.NewClient(options.Authentication)
 	if err != nil {

@@ -9,10 +9,10 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// DeleteCmd holds the cmd flags.
+// DeleteCmd holds the "delete" command flags.
 type DeleteCmd struct{}
 
-// NewDeleteCmd defines the delete command.
+// NewDeleteCmd creates the "delete" command.
 func NewDeleteCmd() *cobra.Command {
 	cmd := &DeleteCmd{}
 	deleteCmd := &cobra.Command{
@@ -31,7 +31,7 @@ func NewDeleteCmd() *cobra.Command {
 	return deleteCmd
 }
 
-// Run runs the delete command logic.
+// Run runs the "delete" command logic.
 func (cmd *DeleteCmd) Run(ctx context.Context, options *options.Options, log log.Logger) error {
 	client, err := ovhcloud.NewClient(options.Authentication)
 	if err != nil {

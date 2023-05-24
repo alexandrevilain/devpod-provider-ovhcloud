@@ -9,10 +9,10 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// StopCmd holds the cmd flags
+// StopCmd holds the "stop" command flags.
 type StopCmd struct{}
 
-// NewStopCmd defines a command
+// NewStopCmd creates the "stop" command.
 func NewStopCmd() *cobra.Command {
 	cmd := &StopCmd{}
 	stopCmd := &cobra.Command{
@@ -31,7 +31,7 @@ func NewStopCmd() *cobra.Command {
 	return stopCmd
 }
 
-// Run runs the command logic
+// Run runs "stop" the command logic.
 func (cmd *StopCmd) Run(ctx context.Context, options *options.Options, log log.Logger) error {
 	client, err := ovhcloud.NewClient(options.Authentication)
 	if err != nil {

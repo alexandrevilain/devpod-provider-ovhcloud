@@ -5,6 +5,7 @@ import (
 	"os"
 )
 
+// Authentication holds required authentication parameters for the OVHCloud API.
 type Authentication struct {
 	Endpoint    string
 	AppKey      string
@@ -14,6 +15,7 @@ type Authentication struct {
 	ServiceName string
 }
 
+// Options holds providers options to create and manage devpod workspaces.
 type Options struct {
 	MachineID     string
 	MachineFolder string
@@ -23,6 +25,7 @@ type Options struct {
 	Flavor string
 }
 
+// FromEnv retrieves options for environement.
 func FromEnv(skipMachine bool) (*Options, error) {
 	retOptions := &Options{}
 

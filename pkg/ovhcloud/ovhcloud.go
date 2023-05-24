@@ -11,6 +11,7 @@ import (
 	"golang.org/x/exp/slices"
 )
 
+// Client is an OVHCloud API client.
 type Client struct {
 	client *ovh.Client
 
@@ -18,6 +19,7 @@ type Client struct {
 	serviceName string
 }
 
+// NewClient creates a new Client.
 func NewClient(auth *options.Authentication) (*Client, error) {
 	client, err := ovh.NewClient(
 		auth.Endpoint,
@@ -40,6 +42,7 @@ func sshKeyName(name string) string {
 	return fmt.Sprintf("devpod-%s", name)
 }
 
+// Init ensures the client can connect to the OVHCloud API.
 func (c *Client) Init(ctx context.Context) error {
 	_, err := c.listInstances(ctx)
 	if err != nil {
@@ -49,6 +52,7 @@ func (c *Client) Init(ctx context.Context) error {
 	return nil
 }
 
+// GetInstanceByName retrieves an instance by name.
 func (c *Client) GetInstanceByName(ctx context.Context, name string) (*Instance, error) {
 	instances, err := c.listInstances(ctx)
 	if err != nil {
@@ -64,6 +68,7 @@ func (c *Client) GetInstanceByName(ctx context.Context, name string) (*Instance,
 	return nil, fmt.Errorf("can't find instance '%s'", name)
 }
 
+// CreateInstance creates the instance using provided options.
 func (c *Client) CreateInstance(ctx context.Context, opts CreateInstanceOptions) error {
 	flavor, found, err := c.findFlavorByName(ctx, opts.Flavor)
 	if err != nil {

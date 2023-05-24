@@ -9,9 +9,9 @@ import (
 	"golang.org/x/crypto/ssh"
 )
 
-// NewRootCmd returns a new root command
+// NewRootCmd creates a new root command.
 func NewRootCmd() *cobra.Command {
-	gcloudCmd := &cobra.Command{
+	rootCmd := &cobra.Command{
 		Use:           "devpod-provider-ovhcloud",
 		Short:         "ovhcloud provider commands",
 		SilenceErrors: true,
@@ -23,14 +23,19 @@ func NewRootCmd() *cobra.Command {
 		},
 	}
 
-	return gcloudCmd
+	return rootCmd
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.
-// This is called by main.main(). It only needs to happen once to the rootCmd.
 func Execute() {
-	// build the root command
-	rootCmd := BuildRoot()
+	rootCmd := NewRootCmd()
+	rootCmd.AddCommand(NewCreateCmd())
+	rootCmd.AddCommand(NewStatusCmd())
+	rootCmd.AddCommand(NewDeleteCmd())
+	rootCmd.AddCommand(NewStartCmd())
+	rootCmd.AddCommand(NewStopCmd())
+	rootCmd.AddCommand(NewCommandCmd())
+	rootCmd.AddCommand(NewInitCmd())
 
 	// execute command
 	err := rootCmd.Execute()
@@ -47,18 +52,4 @@ func Execute() {
 
 		log.Default.Fatal(err)
 	}
-}
-
-// BuildRoot creates a new root command from the
-func BuildRoot() *cobra.Command {
-	rootCmd := NewRootCmd()
-
-	rootCmd.AddCommand(NewCreateCmd())
-	rootCmd.AddCommand(NewStatusCmd())
-	rootCmd.AddCommand(NewDeleteCmd())
-	rootCmd.AddCommand(NewStartCmd())
-	rootCmd.AddCommand(NewStopCmd())
-	rootCmd.AddCommand(NewCommandCmd())
-	rootCmd.AddCommand(NewInitCmd())
-	return rootCmd
 }

@@ -8,6 +8,6 @@ import (
 )
 
 func main() {
-	rand.Seed(time.Now().UTC().UnixNano())
+	rand.Seed(time.Now().UTC().UnixNano()) //nolint:staticcheck
 	cmd.Execute()
 }
