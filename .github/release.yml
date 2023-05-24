@@ -8,12 +8,16 @@ changelog:
           - bugfix
           - documentation
           - dependencies
+          - cleanup
     - title: 🐛 Bug fixes
       labels:
         - bugfix
     - title: 📖 Documentation
       labels:
         - documentation
-    - title: 🌱 Dependencies
+    - title: 🔨 Dependencies
       labels:
         - dependencies
+    - title: 🌱 Cleanup
+      labels:
+        - cleanup
