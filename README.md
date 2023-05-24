@@ -1,4 +1,4 @@
-# devpod-provider-ovhcloud
+# OVHCloud provider for DevPod
 
 The OVHCloud provider for [Loft Labs' DevPod](https://github.com/loft-sh/devpod).
 
