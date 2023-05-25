@@ -173,8 +173,9 @@ binaries:
 {{- range file.Walk "./dist" -}}
 {{- if not (file.IsDir .) -}}
     {{- $parts := . | regexp.Split "_" -1 }}
+    {{- $ext := filepath.Ext . }}
     - os: {{ index $parts 1 }}
-      arch: {{ index $parts 2 }}
+      arch: {{ index $parts 2 | strings.Trim $ext }}
       path: https://github.com/alexandrevilain/devpod-provider-ovhcloud/releases/download/{{ $.Env.VERSION }}/{{ . | filepath.Base }}
       checksum: {{ . | file.Read | crypto.SHA256 }}
 {{- end -}}
