@@ -7,6 +7,7 @@ import (
 
 	"github.com/alexandrevilain/devpod-provider-ovhcloud/pkg/options"
 	"github.com/alexandrevilain/devpod-provider-ovhcloud/pkg/ovhcloud"
+	"github.com/loft-sh/devpod/pkg/client"
 	"github.com/loft-sh/devpod/pkg/log"
 	"github.com/spf13/cobra"
 )
@@ -52,10 +53,10 @@ func (cmd *StatusCmd) Run(ctx context.Context, options *options.Options, log log
 func ovhCloudStatusToDevPodStatus(status ovhcloud.InstanceStatus) string {
 	switch status {
 	case ovhcloud.InstanceActive:
-		return "Running"
+		return client.StatusRunning
 	case ovhcloud.InstanceStopped, ovhcloud.InstanceShutOff:
-		return "Stopped"
+		return client.StatusStopped
 	default:
-		return "Busy"
+		return client.StatusBusy
 	}
 }
