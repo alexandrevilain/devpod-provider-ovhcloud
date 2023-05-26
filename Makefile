@@ -11,7 +11,7 @@ $(RELEASE_DIR):
 
 .PHONY: release
 release: gox gomplate $(RELEASE_DIR) ## Run release artifacts
-	$(GOX) -output="dist/{{.Dir}}_{{.OS}}_{{.Arch}}" -os="linux darwin windows" -arch="amd64 arm64"
+	CGO_ENABLED=0 $(GOX) -output="dist/{{.Dir}}_{{.OS}}_{{.Arch}}" -os="linux darwin windows" -arch="amd64 arm64"
 	VERSION=$(VERSION) $(GOMPLATE) -f hack/provider.yaml.tpl > $(RELEASE_DIR)/provider.yaml
 	mv dist/* $(RELEASE_DIR)
 	rm -rf dist/
