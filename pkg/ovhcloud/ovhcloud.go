@@ -38,10 +38,6 @@ func NewClient(auth *options.Authentication) (*Client, error) {
 	}, nil
 }
 
-func sshKeyName(name string) string {
-	return fmt.Sprintf("devpod-%s", name)
-}
-
 // Init ensures the client can connect to the OVHCloud API.
 func (c *Client) Init(ctx context.Context) error {
 	_, err := c.listInstances(ctx)
@@ -88,7 +84,7 @@ func (c *Client) CreateInstance(ctx context.Context, opts CreateInstanceOptions)
 		return fmt.Errorf("can't find image named '%s'", opts.Image)
 	}
 
-	sskKey, err := c.getOrCreateSSHKey(ctx, sshKeyName(opts.Name), opts.PublicKey)
+	sskKey, err := c.getOrCreateSSHKey(ctx, opts.Name, opts.PublicKey)
 	if err != nil {
 		return err
 	}
@@ -128,23 +124,7 @@ func (c *Client) StopInstance(ctx context.Context, name string) error {
 		return err
 	}
 
-	// wait until stopped
-	for {
-		instance, err := c.getInstanceByID(ctx, instance.ID)
-		if err != nil {
-			return err
-		}
-
-		fmt.Println(instance.Status)
-
-		if instance.Status == InstanceStopped {
-			break
-		}
-		// make sure we don't spam
-		time.Sleep(time.Second)
-	}
-
-	return nil
+	return c.waitInstanceStatus(ctx, instance.ID, InstanceStopped)
 }
 
 func (c *Client) GetInstanceStatus(ctx context.Context, name string) (InstanceStatus, error) {
@@ -162,7 +142,7 @@ func (c *Client) DeleteInstance(ctx context.Context, name string) error {
 		return err
 	}
 
-	sshKey, _, err := c.findSSHKeyByName(ctx, sshKeyName(name))
+	sshKey, _, err := c.findSSHKeyByName(ctx, name)
 	if err != nil {
 		return err
 	}
@@ -171,6 +151,24 @@ func (c *Client) DeleteInstance(ctx context.Context, name string) error {
 		c.deleteInstance(ctx, instance.ID),
 		c.deleteSSHKey(ctx, sshKey.ID),
 	)
+}
+
+func (c *Client) waitInstanceStatus(ctx context.Context, id string, status InstanceStatus) error {
+	for {
+		instance, err := c.getInstanceByID(ctx, id)
+		if err != nil {
+			return err
+		}
+
+		if instance.Status == status {
+			break
+		}
+
+		// make sure we don't spam
+		time.Sleep(time.Second)
+	}
+
+	return nil
 }
 
 func (c *Client) getInstanceByID(ctx context.Context, id string) (*Instance, error) {
@@ -274,7 +272,6 @@ func (c *Client) getOrCreateSSHKey(ctx context.Context, name string, content []b
 }
 
 func (c *Client) createSSHKey(ctx context.Context, req *CreateSSHKeyRequest) (*SSHKey, error) {
-	fmt.Println(req.PublicKey)
 	resp := &SSHKey{}
 	err := c.client.PostWithContext(ctx, fmt.Sprintf("/cloud/project/%s/sshkey", c.serviceName), req, resp)
 	if err != nil {
