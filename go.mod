@@ -3,7 +3,7 @@ module github.com/alexandrevilain/devpod-provider-ovhcloud
 go 1.20
 
 require (
-	github.com/loft-sh/devpod v0.1.5
+	github.com/loft-sh/devpod v0.1.7
 	github.com/ovh/go-ovh v1.4.1
 	github.com/pkg/errors v0.9.1
 	github.com/spf13/cobra v1.7.0
@@ -27,6 +27,7 @@ require (
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/k0kubun/go-ansi v0.0.0-20180517002512-3bf9e2903213 // indirect
 	github.com/kballard/go-shellquote v0.0.0-20180428030007-95032a82bc51 // indirect
+	github.com/kr/pretty v0.3.1 // indirect
 	github.com/loft-sh/utils v0.0.15 // indirect
 	github.com/mattn/go-colorable v0.1.2 // indirect
 	github.com/mattn/go-isatty v0.0.8 // indirect
@@ -41,6 +42,7 @@ require (
 	golang.org/x/sys v0.8.0 // indirect
 	golang.org/x/term v0.8.0 // indirect
 	golang.org/x/text v0.9.0 // indirect
+	gopkg.in/check.v1 v1.0.0-20201130134442-10cb98267c6c // indirect
 	gopkg.in/inf.v0 v0.9.1 // indirect
 	gopkg.in/ini.v1 v1.67.0 // indirect
 	gopkg.in/natefinch/lumberjack.v2 v2.2.1 // indirect
