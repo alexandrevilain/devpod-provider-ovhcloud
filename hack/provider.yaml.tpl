@@ -149,6 +149,7 @@ options:
     default: /var/lib/toolbox/devpod
 agent:
   path: ${AGENT_PATH}
+  dataPath: /home/debian/.devpod
   inactivityTimeout: ${INACTIVITY_TIMEOUT}
   injectGitCredentials: ${INJECT_GIT_CREDENTIALS}
   injectDockerCredentials: ${INJECT_DOCKER_CREDENTIALS}
