@@ -3,7 +3,7 @@ module github.com/alexandrevilain/devpod-provider-ovhcloud
 go 1.20
 
 require (
-	github.com/loft-sh/devpod v0.1.7
+	github.com/loft-sh/devpod v0.1.8
 	github.com/ovh/go-ovh v1.4.1
 	github.com/pkg/errors v0.9.1
 	github.com/spf13/cobra v1.7.0
