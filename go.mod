@@ -4,7 +4,7 @@ go 1.20
 
 require (
 	github.com/loft-sh/devpod v0.1.10
-	github.com/ovh/go-ovh v1.4.1
+	github.com/ovh/go-ovh v1.4.2
 	github.com/pkg/errors v0.9.1
 	github.com/spf13/cobra v1.7.0
 	golang.org/x/crypto v0.12.0
