@@ -129,12 +129,20 @@ options:
     - s1-2
     - s1-4
     - s1-8
-    - t1-180
+    - t1-le-45
+    - t1-le-90
+    - t1-le-180
     - t1-45
     - t1-90
-    - t2-180
+    - t1-180
+    - t2-le-45
+    - t2-le-90
+    - t2-le-180
     - t2-45
     - t2-90
+    - t2-180
+    - a100-180
+    - a100-360
   INACTIVITY_TIMEOUT:
     description: If defined, will automatically stop the VM after the inactivity period.
     default: 10m
