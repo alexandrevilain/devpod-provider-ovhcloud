@@ -6,7 +6,7 @@ require (
 	github.com/loft-sh/devpod v0.1.10
 	github.com/ovh/go-ovh v1.4.3
 	github.com/pkg/errors v0.9.1
-	github.com/spf13/cobra v1.7.0
+	github.com/spf13/cobra v1.8.0
 	golang.org/x/crypto v0.14.0
 	golang.org/x/exp v0.0.0-20230519143937-03e91628a987
 )
