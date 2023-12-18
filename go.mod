@@ -7,7 +7,7 @@ require (
 	github.com/ovh/go-ovh v1.4.3
 	github.com/pkg/errors v0.9.1
 	github.com/spf13/cobra v1.8.0
-	golang.org/x/crypto v0.16.0
+	golang.org/x/crypto v0.17.0
 	golang.org/x/exp v0.0.0-20230519143937-03e91628a987
 )
 
