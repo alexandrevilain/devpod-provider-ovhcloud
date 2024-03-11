@@ -27,6 +27,6 @@ jobs:
         run: |
           make release VERSION=${{ steps.set_version.outputs.version }}
       - name: Save release artifacts
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           files: release/*
