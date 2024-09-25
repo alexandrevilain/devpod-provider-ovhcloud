@@ -91,6 +91,12 @@ options:
     - b2-60-flex
     - b2-7
     - b2-7-flex
+    - b3-8
+    - b3-16
+    - b3-32
+    - b3-64
+    - b3-128
+    - b3-256
     - bm-l1
     - bm-m1
     - bm-s1
@@ -104,6 +110,12 @@ options:
     - c2-60-flex
     - c2-7
     - c2-7-flex
+    - c3-4
+    - c3-8
+    - c3-16
+    - c3-32
+    - c3-64
+    - c3-128
     - d2-2
     - d2-4
     - d2-8
@@ -126,6 +138,12 @@ options:
     - r2-30-flex
     - r2-60
     - r2-60-flex
+    - r3-16
+    - r3-32
+    - r3-64
+    - r3-128
+    - r3-256
+    - r3-512
     - s1-2
     - s1-4
     - s1-8
@@ -143,6 +161,15 @@ options:
     - t2-180
     - a100-180
     - a100-360
+    - l4-90
+    - l4-180
+    - l4-360
+    - l40s-90
+    - l40s-180
+    - l40s-360
+    - h100-380
+    - h100-760
+    - h100-1520
   INACTIVITY_TIMEOUT:
     description: If defined, will automatically stop the VM after the inactivity period.
     default: 10m
