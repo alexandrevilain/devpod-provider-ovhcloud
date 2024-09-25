@@ -77,6 +77,13 @@ options:
     - HIL1 
     - SGP1
     - SYD1
+    - EU-WEST-LZ-MRS-A
+    - EU-CENTRAL-LZ-PRG-A
+    - EU-SOUTH-LZ-MAD-A
+    - EU-SOUTH-LZ-MIL-A
+    - EU-WEST-LZ-AMS-A
+    - EU-WEST-LZ-BRU-A
+    - EU-WEST-LZ-ZRH-A
   OVHCLOUD_FLAVOR:
     description: The machine type to use.
     default: b2-7
