@@ -54,7 +54,7 @@ func (cmd *CreateCmd) Run(ctx context.Context, options *options.Options, log log
 	opts := ovhcloud.CreateInstanceOptions{
 		Name:      options.MachineID,
 		Flavor:    options.Flavor,
-		Image:     "Debian 10 - Docker",
+		Image:     "Debian 12 - Docker",
 		PublicKey: publicKey,
 	}
 
