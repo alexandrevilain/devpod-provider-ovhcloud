@@ -78,8 +78,15 @@ options:
     - SGP1
     - SYD1
     - EU-CENTRAL-LZ-PRG-A
+    - EU-CENTRAL-LZ-BUH-A
+    - EU-CENTRAL-LZ-SOF-A
+    - EU-NORTH-LZ-CPH-A
+    - EU-NORTH-LZ-OSL-A
+    - EU-NORTH-LZ-STO-A
+    - EU-NORTH-LZ-HEL-A
     - EU-SOUTH-LZ-MAD-A
     - EU-SOUTH-LZ-MIL-A
+    - EU-SOUTH-LZ-LIS-A
     - EU-WEST-LZ-AMS-A
     - EU-WEST-LZ-BRU-A
     - EU-WEST-LZ-DLN-A
@@ -87,10 +94,13 @@ options:
     - EU-WEST-LZ-MRS-A
     - EU-WEST-LZ-VIE-A
     - EU-WEST-LZ-ZRH-A
+    - EU-WEST-LZ-MNC-A
     - EU-NORTH-LZ-STO-A
     - AP-NORTH-LZ-RBA-A
     - AP-SOUTHEAST-SYD-2
     - AP-SOUTH-MUM-1
+    - AF-NORTH-LZ-RBA-A
+    - EU-WEST-PAR
   OVHCLOUD_FLAVOR:
     description: The machine type to use.
     default: b2-7
@@ -111,6 +121,8 @@ options:
     - b3-64
     - b3-128
     - b3-256
+    - b3-512
+    - b3-640
     - bm-l1
     - bm-m1
     - bm-s1
@@ -130,6 +142,8 @@ options:
     - c3-32
     - c3-64
     - c3-128
+    - c3-256
+    - c3-320
     - d2-2
     - d2-4
     - d2-8
@@ -158,6 +172,7 @@ options:
     - r3-128
     - r3-256
     - r3-512
+    - r3-1024
     - s1-2
     - s1-4
     - s1-8
@@ -173,6 +188,9 @@ options:
     - t2-45
     - t2-90
     - t2-180
+    - a10-45
+    - a10-90
+    - a10-180
     - a100-180
     - a100-360
     - l4-90
@@ -184,6 +202,9 @@ options:
     - h100-380
     - h100-760
     - h100-1520
+    - rtx5000-28
+    - rtx5000-56
+    - rtx5000-84
   INACTIVITY_TIMEOUT:
     description: If defined, will automatically stop the VM after the inactivity period.
     default: 10m
