@@ -23,7 +23,7 @@ jobs:
         with:
           go-version: ${{ env.GO_VERSION }}
           cache: false
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: lint
         uses: golangci/golangci-lint-action@v6
         with:
