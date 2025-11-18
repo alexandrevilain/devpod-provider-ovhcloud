@@ -101,6 +101,7 @@ options:
     - AP-SOUTH-MUM-1
     - AF-NORTH-LZ-RBA-A
     - EU-WEST-PAR
+    - EU-SOUTH-MIL
   OVHCLOUD_FLAVOR:
     description: The machine type to use.
     default: b2-7
